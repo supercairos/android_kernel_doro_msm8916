@@ -1364,6 +1364,18 @@
 				drive-strength = <2>;
 			};
 		};
+		
+		hall_sensor_int_pin {
+			qcom,pins = <&gp 11>;
+			qcom,pin-func = <0>;
+			qcom,num-grp-pins = <1>;
+			label = "s5712-irq";
+			hall_sensor_default: hall_sensor_default {
+				drive-strength = <2>;
+				//bias-pull-up;
+				bias-disable; 
+			};
+		};
 
 		apds99xx_int_pin {
 			qcom,pins = <&gp 113>;
