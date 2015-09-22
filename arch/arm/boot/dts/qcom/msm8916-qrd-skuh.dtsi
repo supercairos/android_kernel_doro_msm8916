@@ -261,7 +261,7 @@
 			qcom,supply-enable-load = <40>;
 			qcom,supply-disable-load = <0>;
 		};
-	};*/
+	};
 };
 
 &dsi_hx8394d_720_vid {
