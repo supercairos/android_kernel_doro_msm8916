@@ -235,42 +235,14 @@
 	pinctrl-names = "mdss_default", "mdss_sleep";
 	pinctrl-0 = <&mdss_dsi_active>;
 	pinctrl-1 = <&mdss_dsi_suspend>;
-
-	qcom,platform-reset-gpio = <&msm_gpio 25 0>;
-
-	vsp-supply = <&tps65132_pos>;
-	vsn-supply = <&tps65132_neg>;
-	qcom,panel-supply-entries {
-		#address-cells = <1>;
-		#size-cells = <0>;
-
-		qcom,panel-supply-entry@2 {
-			reg = <2>;
-			qcom,supply-name = "vsp";
-			qcom,supply-min-voltage = <5400000>;
-			qcom,supply-max-voltage = <5400000>;
-			qcom,supply-enable-load = <200>;
-			qcom,supply-disable-load = <0>;
-		};
-
-		qcom,panel-supply-entry@3 {
-			reg = <3>;
-			qcom,supply-name = "vsn";
-			qcom,supply-min-voltage = <5400000>;
-			qcom,supply-max-voltage = <5400000>;
-			qcom,supply-enable-load = <40>;
-			qcom,supply-disable-load = <0>;
-		};
-	};
 };
 
 &dsi_hx8394d_720_vid {
 	qcom,cont-splash-enabled;
 };
 
-&dsi_innolux_720p_video {
+&dsi_yt50f_720_vid {
 	qcom,cont-splash-enabled;
-	qcom,esd-check-enabled;
 };
 
 &soc {
@@ -427,8 +399,8 @@
 };
 
 &pm8916_chg {
-	qcom,vddmax-mv = <4350>;
-	qcom,vddsafe-mv = <4380>;
+	qcom,vddmax-mv = <4200>;
+	qcom,vddsafe-mv = <4200>;
 	qcom,vinmin-mv = <4470>;
 	qcom,batt-hot-percentage = <35>;
 	qcom,batt-cold-percentage = <70>;
@@ -447,6 +419,8 @@
 
 &pm8916_bms {
 	status = "ok";
+	qcom,resume-soc= <95>;
+	qcom,use-reported-soc;
 	qcom,battery-data = <&qrd_batterydata>;
 };
 
