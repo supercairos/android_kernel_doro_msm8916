@@ -242,4 +242,10 @@ config QMP_CORE
 	help
 		This option enables Qualcomm Malware Protection Sphinx component
 		to log on-device software API activity.
+		
+config SEEMP_CORE
+	tristate "SEEMP Core"
+	help
+		This option enables malware protection component
+		to log on-device software API activity.
 endmenu
