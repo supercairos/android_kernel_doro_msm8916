@@ -1343,6 +1343,15 @@ static struct mfd_cell largo_devs[] = {
 	{ .name = "largo-codec" },
 };
 
+static struct mfd_cell wm5110_devs[] = {
+	{ .name = "arizona-micsupp" },
+	{ .name = "arizona-extcon" },
+	{ .name = "arizona-gpio" },
+	{ .name = "arizona-haptics" },
+	{ .name = "arizona-pwm" },
+	{ .name = "wm5110-codec" },
+};
+
 static struct mfd_cell wm8997_devs[] = {
 	{ .name = "arizona-micsupp" },
 	{ .name = "arizona-extcon" },
@@ -1768,6 +1777,17 @@ int arizona_dev_init(struct arizona *arizona)
 		apply_patch = florida_patch;
 		break;
 #endif
+#ifdef CONFIG_MFD_WM5110
+	case 0x5110:
+		type_name = "WM5110";
+		if (arizona->type != WM5110) {
+			dev_err(arizona->dev, "WM5110 registered as %d\n",
+				arizona->type);
+			arizona->type = WM5110;
+		}
+		apply_patch = wm5110_patch;
+		break;
+#endif
 #ifdef CONFIG_MFD_LARGO
 	case 0x6363:
 		switch (arizona->type) {
@@ -2128,9 +2148,12 @@ default:
 				      ARRAY_SIZE(wm5102_devs), NULL, 0, NULL);
 		break;
 	case WM8280:
-	case WM5110:
 		ret = mfd_add_devices(arizona->dev, -1, florida_devs,
 				      ARRAY_SIZE(florida_devs), NULL, 0, NULL);
+		break;
+	case WM5110:
+		ret = mfd_add_devices(arizona->dev, -1, wm5110_devs,
+				      ARRAY_SIZE(wm5110_devs), NULL, 0, NULL);
 		break;
 	case WM1831:
 	case CS47L24:

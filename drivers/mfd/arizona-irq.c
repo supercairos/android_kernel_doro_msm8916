@@ -236,6 +236,14 @@ int arizona_irq_init(struct arizona *arizona)
 		ctrlif_error = false;
 		break;
 #endif
+#ifdef CONFIG_MFD_WM5110
+	case WM5110:
+		aod = &wm5110_aod;
+		irq = &wm5110_irq;
+
+		ctrlif_error = false;
+		break;
+#endif
 #ifdef CONFIG_MFD_CLEARWATER
 	case WM8285:
 	case WM1840:

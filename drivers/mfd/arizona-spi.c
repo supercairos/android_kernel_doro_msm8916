@@ -56,6 +56,11 @@ static int arizona_spi_probe(struct spi_device *spi)
 		regmap_32bit_config = &clearwater_32bit_spi_regmap;
 		break;
 #endif
+#ifdef CONFIG_MFD_WM5110
+	case WM5110:
+		regmap_config = &wm5110_spi_regmap;
+		break;
+#endif
 #ifdef CONFIG_MFD_LARGO
 	case WM1831:
 	case CS47L24:

@@ -48,6 +48,10 @@ static int arizona_i2c_probe(struct i2c_client *i2c,
 		regmap_config = &florida_i2c_regmap;
 		break;
 #endif
+#ifdef CONFIG_MFD_WM5110
+	case WM5110:
+		regmap_config = &wm5110_i2c_regmap;
+#endif
 #ifdef CONFIG_MFD_WM8997
 	case WM8997:
 		regmap_config = &wm8997_i2c_regmap;
