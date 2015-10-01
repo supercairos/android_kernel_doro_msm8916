@@ -42,12 +42,12 @@ static unsigned char CTPM_FW[]=
 #endif
 static unsigned char CTPM_FW_BYD[]=
 {
-	#include "FT5436I_Ref_V0x07_20150821_app.i"
+	#include "BYD_DORO_FT5436I_Byd_0x08_20150918_app.i"
 };
 
 static unsigned char CTPM_FW_YASHI[]=
 {
-	#include "BYD_DORO_FT5436I_Yashi_0x20_20150906_app.i"
+	#include "BYD_DORO_FT5436I_Yashi_0x21_20150918_app.i"
 };
 extern  void ft5x0x_chip_reset(void);
 //int  fts_ctpm_fw_upgrade(struct i2c_client * client, u8* pbt_buf, u32 dw_lenth);
